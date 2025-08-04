@@ -1,0 +1,36 @@
+{
+    "weaponList": [
+        {
+            "id": "DMG",
+            "name": "Double Machine Gun",
+            "category": "Assault Rifle",
+            "level": 1,
+            "description": "Double Mas",
+            "path": "Data/Weapons/Double Machine Gun.json"
+        },
+        {
+            "id": "AC",
+            "name": "AutoCanon",
+            "category": "Canon",
+            "level": "1",
+            "description": "canon",
+            "path": "Data/Weapons/AutoCanon.json"
+        },
+        {
+            "id": "MicroMissiles",
+            "name": "MicroMissile",
+            "category": "shoulder Missile",
+            "level": "1",
+            "description": "New weapon description",
+            "path": "Data/Weapons/MicroMissile.json"
+        },
+        {
+            "id": "MicroMissile",
+            "name": "MicroMissile",
+            "category": "Missile",
+            "level": "1",
+            "description": "New weapon description",
+            "path": "Data/Weapons/MicroMissile.json"
+        }
+    ]
+}

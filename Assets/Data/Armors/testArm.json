@@ -1,0 +1,8 @@
+{
+    "ArmorData": {
+        "armorModel": "Assets/Model/testArm.prefab",
+        "weight": 5.0,
+        "modelNumber": "XXX-99X",
+        "armorName": "testArm"
+    }
+}

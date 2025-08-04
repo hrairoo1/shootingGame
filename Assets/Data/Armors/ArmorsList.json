@@ -1,0 +1,44 @@
+{
+  "armorList": [
+    {
+        "id": "testBody",
+        "name": "test Body",
+        "category": "Body_Medium",
+        "level": "1",
+        "description": "testBody",
+        "path": "Data/Armors/testBody.json"
+    },
+    {
+        "id": "testArm",
+        "name": "test Arm",
+        "category": "Arm_Medium",
+        "level": "1",
+        "description": "testArm",
+        "path": "Data/Armors/testArm.json"
+    },
+    {
+        "id": "testLeg",
+        "name": "test Leg",
+        "category": "Leg_Medium",
+        "level": "1",
+        "description": "testLeg",
+        "path": "Data/Armors/testLeg.json"
+    },
+    {
+        "id": "testBackpack",
+        "name": "test Backpack",
+        "category": "Backpack_Medium",
+        "level": "1",
+        "description": "testBack",
+        "path": "Data/Armors/testBackpack.json"
+    },
+    {
+        "id": "testBackpack2",
+        "name": "test Backpack2",
+        "category": "Backpack_Medium",
+        "level": "1",
+        "description": "test",
+        "path": "Data/Armors/testBackpack2.json"
+    }
+  ]
+}

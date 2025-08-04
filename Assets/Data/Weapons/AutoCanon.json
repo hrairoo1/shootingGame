@@ -1,0 +1,61 @@
+{
+    "WeaponData": {
+        "weaponModel": "Assets/AutoCannon.prefab",
+        "weight": 50.0,
+        "modelNumber": "XAC-50",
+        "weaponName": "Auto Canon",
+        "ammo": {
+            "ammoPrefabPath": "Assets/Burret.prefab",
+            "ammoDamage": 1.0,
+            "ammoSize": 1.0,
+            "ammoCount": 50,
+            "bulletSpeed": 250.0,
+            "lifeTime": 500.0
+        },
+        "fireControl": {
+            "fireRate": 0.2,
+            "reloadTime": 5.0,
+            "chargeReload": 1.0,
+            "gravityFactor": 0.0,
+            "fireBurst": 1,
+            "fireBustRate": 0.0,
+            "boostDelay": 0.0,
+            "initialVeliocity": 0.0,
+            "initialGravity": 0.0,
+            "fireCount": 1,
+            "spinUpType": 0,
+            "spinUp": 0.0,
+            "spread": 0.0,
+            "accuracy": 1.0,
+            "explosion": 3.0,
+            "explosionType": 0
+        },
+        "lockOn": {
+            "lockOnTime": 0.0,
+            "lockOnRange": 0.0,
+            "lockOnSize_x": 0.0,
+            "lockOnSize_y": 0.0,
+            "homingAccuracy": 0.0,
+            "startHoming": 0.0,
+            "allowMultiLock": false,
+            "shootMuzzleRotate": false
+        },
+        "recoil": {
+            "recoilAmountX": 0.0,
+            "recoilRecovery": 0.0,
+            "recoilSpread": 0.0,
+            "maxRecoilRadius": 0.0
+        },
+        "cartridge": {
+            "cartridgePrefabPath": "Assets/cartridge.prefab",
+            "cartridgeSize": 1.0,
+            "cartridgeSpeed": 3.0,
+            "cartridgeLifeTime": 0.0,
+            "cartridgeDelay": 0.1,
+            "cartridgeRotateSpeed": 0.5,
+            "cartridgeRandomness": 0.0,
+            "cartridgeYAngle": 0.0,
+            "cartridgeRotate": 0.0
+        }
+    }
+}

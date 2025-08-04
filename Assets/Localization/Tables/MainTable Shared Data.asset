@@ -1,0 +1,133 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: MainTable Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: MainTable
+  m_TableCollectionNameGuidString: b095d06e8a2be8b4b97d472fc206d6fb
+  m_Entries:
+  - m_Id: 1751862546432
+    m_Key: Back
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2493675540480
+    m_Key: Comfilm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 175647297536
+    m_Key: MainL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11176054784
+    m_Key: MainR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454564319232
+    m_Key: ShoulderL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 372259491840
+    m_Key: ShoulderR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 223164567552
+    m_Key: SubL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 200204947456
+    m_Key: SubR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3527324012544
+    m_Key: Color Change
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5557753024512
+    m_Key: Right
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5643333603328
+    m_Key: Left
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5708806688768
+    m_Key: Up
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5746064691200
+    m_Key: Down
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5965552619520
+    m_Key: Weapon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5965686837248
+    m_Key: Armor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7799352659968
+    m_Key: HeadArmor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7800879386624
+    m_Key: BodyArmor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7802330615808
+    m_Key: ArmArmor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7803282722816
+    m_Key: LegArmor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7803958005760
+    m_Key: Backpack
+    m_Metadata:
+      m_Items: []
+  - m_Id: 777692482179072
+    m_Key: Rocket
+    m_Metadata:
+      m_Items: []
+  - m_Id: 783711115481088
+    m_Key: Assault Rifle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 783987901796352
+    m_Key: Sniper
+    m_Metadata:
+      m_Items: []
+  - m_Id: 784051516805120
+    m_Key: Missile
+    m_Metadata:
+      m_Items: []
+  - m_Id: 784107997302784
+    m_Key: Canon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 784780780441600
+    m_Key: xxx
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 7110056082744279066
+  references:
+    version: 2
+    RefIds:
+    - rid: 7110056082744279066
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables,
+        asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1742113971133

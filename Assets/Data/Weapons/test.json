@@ -1,0 +1,22 @@
+{
+    "weaponList": [
+        {
+            "id": "DMG",
+            "modelNumber": "XX-99X",
+            "name": "Double Machine Gun",
+            "category": "Assault Rifle",
+            "level": 1,
+            "description": "Double Mas",
+            "path": "Data/Weapons/Double Machine Gun.json"
+        },
+        {
+            "id": "AC",
+            "modelNumber": "XX-99X",
+            "name": "AutoCanon",
+            "category": "Canon",
+            "level": 1,
+            "description": "canon",
+            "path": "Data/Weapons/AutoCanon.json"
+        }
+    ]
+}

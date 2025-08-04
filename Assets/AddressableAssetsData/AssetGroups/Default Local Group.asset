@@ -1,0 +1,100 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Default Local Group
+  m_EditorClassIdentifier: 
+  m_GroupName: Default Local Group
+  m_Data:
+    m_SerializedData: []
+  m_GUID: d7385283c8e176f47abf92cc24a74ecc
+  m_SerializeEntries:
+  - m_GUID: 0a6c13f31da150a458f7629f42c9e88a
+    m_Address: Assets/Auto Cannon.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1a50230e65cd142429642eaa6286b2f0
+    m_Address: Assets/Model/testLeg.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1fdc3123f0e468d48ac2cfe3caec5924
+    m_Address: Assets/Model/testModel.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 372e9fdc6eabd3a4c96a1faf081556b9
+    m_Address: Assets/bullet.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 544e6b54f5554234985e0bb78ccf30ad
+    m_Address: Assets/Model/testBackpack.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 75db058d004f68c4f9e26ecd4663dba2
+    m_Address: Assets/Double Machine Gun.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 79b563bd839d6d54e91a70a00459c49a
+    m_Address: Assets/rocket.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7b79bb3ad55dbf24991780ad44b3d8fb
+    m_Address: Assets/DMGT.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9ab9475f6ffaca5448260ca6b32cfbc6
+    m_Address: Assets/AutoCannon.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9c43fc0f426f1a94e98f1c976c6e31cb
+    m_Address: Assets/cartridge.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9e96a3287bd507b45af6366d26963f55
+    m_Address: Assets/Model/testArm.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c34a8a09502a4a3419d49792d1666647
+    m_Address: Assets/Model/testBody.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c3d1db60eb02a1647a58f02b2775aaf7
+    m_Address: Assets/ExplosionRadius.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c6411e4ebf34dbe4faa281e3c6f8f148
+    m_Address: Assets/Model/testBackpack2.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f8dc004dd5e765b44b071258506c6da8
+    m_Address: Assets/MultiMissile.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: ab039621d2e0fce4db1b1e8b54f3edb0, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 7eea689348ca38e48874f627b043a6cc, type: 2}
+    - {fileID: 11400000, guid: 734327a46eb08f947ac34bb31121de20, type: 2}

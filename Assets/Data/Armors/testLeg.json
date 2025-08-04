@@ -1,0 +1,18 @@
+{
+    "ArmorData": {
+        "armorModel": "Assets/Model/testLeg.prefab",
+        "weight": 25.0,
+        "modelNumber": "XXX-99X",
+        "armorName": "testLeg",
+        "health": 0.0,
+        "defence": 0.0,
+        "leg": {
+            "weightLimit": 525.0
+        },
+        "other": {
+            "energy": 0.0,
+            "thrustPower": 23.0,
+            "hoverPower": 15.0
+        }
+    }
+}

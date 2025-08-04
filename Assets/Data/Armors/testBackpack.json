@@ -1,0 +1,21 @@
+{
+    "ArmorData": {
+        "armorModel": "Assets/Model/testBackpack.prefab",
+        "weight": 5.0,
+        "modelNumber": "XXX-99X",
+        "armorName": "testBackpack",
+        "health": 0.0,
+        "defence": 0.0,
+        "leg": {
+            "weightLimit": 0.0
+        },
+        "other": {
+            "energy": 0.0,
+            "energyRecoveryRate": 10,
+            "energyBoostConsumption": 20,
+            "energyHoverConsumption": 5,
+            "thrustPower": 130.0,
+            "hoverPower": 250.0
+        }
+    }
+}
