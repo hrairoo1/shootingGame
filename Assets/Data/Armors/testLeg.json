@@ -6,11 +6,11 @@
         "armorName": "testLeg",
         "health": 0.0,
         "defence": 0.0,
+        "energy": 0.0,
         "leg": {
             "weightLimit": 525.0
         },
-        "other": {
-            "energy": 0.0,
+        "booster": {
             "thrustPower": 23.0,
             "hoverPower": 15.0
         }

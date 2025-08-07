@@ -6,11 +6,11 @@
         "armorName": "testBackpack",
         "health": 0.0,
         "defence": 0.0,
+        "energy": 0.0,
         "leg": {
             "weightLimit": 0.0
         },
-        "other": {
-            "energy": 0.0,
+        "booster": {
             "energyRecoveryRate": 10,
             "energyBoostConsumption": 20,
             "energyHoverConsumption": 5,

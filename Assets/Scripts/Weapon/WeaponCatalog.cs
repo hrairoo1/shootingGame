@@ -127,12 +127,13 @@ public class ArmorData
     public string armorName;
     public float health;
     public float defence;
+    public float energy;
     public HeadData head;
     public BodyData body;
     public ArmData arm;
     public LegData leg;
     public BackpackData backpack;
-    public OtherData other;
+    public BoosterData booster;
 }
 [System.Serializable]
 public class HeadData
@@ -157,13 +158,11 @@ public class LegData
 [System.Serializable]
 public class BackpackData
 {
-
+    public float energyRecoveryRate;
 }
 [System.Serializable]
-public class OtherData
+public class BoosterData
 {
-    public float energy;
-    public float energyRecoveryRate;
     public float energyBoostConsumption;
     public float energyHoverConsumption;
     public float thrustPower;

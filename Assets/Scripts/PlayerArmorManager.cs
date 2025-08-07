@@ -231,12 +231,12 @@ public class PlayerArmorManager : MonoBehaviour
 
         armor.weightLimit = LoadoutManager.Instance.armor[slotName].leg.weightLimit;
 
-        armor.energy = LoadoutManager.Instance.armor[slotName].other.energy;
-        armor.energyRecoveryRate = LoadoutManager.Instance.armor[slotName].other.energyRecoveryRate;
-        armor.energyBoostConsumption = LoadoutManager.Instance.armor[slotName].other.energyBoostConsumption;
-        armor.energyHoverConsumption = LoadoutManager.Instance.armor[slotName].other.energyHoverConsumption;
+        armor.energy = LoadoutManager.Instance.armor[slotName].energy;
+        armor.energyRecoveryRate = LoadoutManager.Instance.armor[slotName].backpack.energyRecoveryRate;
+        armor.energyBoostConsumption = LoadoutManager.Instance.armor[slotName].booster.energyBoostConsumption;
+        armor.energyHoverConsumption = LoadoutManager.Instance.armor[slotName].booster.energyHoverConsumption;
 
-        armor.thrustPower = LoadoutManager.Instance.armor[slotName].other.thrustPower;
-        armor.hoverPower = LoadoutManager.Instance.armor[slotName].other.hoverPower;
+        armor.thrustPower = LoadoutManager.Instance.armor[slotName].booster.thrustPower;
+        armor.hoverPower = LoadoutManager.Instance.armor[slotName].booster.hoverPower;
     }
 }
