@@ -11,15 +11,15 @@ public class PlayerMovement : MonoBehaviour
     public float dashSpeed = 10f; // ダッシュ時の速度
     private float currentSpeed; // 現在の移動速度
     private float targetSpeed;
-    public float groundCheckDistance = 0.3f;
+    public float groundCheckDistance = 1.05f;
     private Vector3 groundNormal = Vector3.up;
     private bool isDush;
 
     // ジャンプ関連の設定
     [Header("Jump")]
-    public float jumpForce = 5f; // 通常ジャンプの力
-    public float boosterForce = 10f; // ブーストジャンプの力
-    public float maxBoosterSpeed = 15f; // 最大ブーストジャンプ速度
+    public float jumpForce = 7f; // 通常ジャンプの力
+    public float boosterForce = 3f; // ブーストジャンプの力
+    public float maxBoosterSpeed = 50f; // 最大ブーストジャンプ速度
     public float maxFallSpeed = -20f; // 最大落下速度
     private float jumpHoldTime = 0f; // ジャンプボタンを押している時間
     public bool isJumping = false;
@@ -29,17 +29,14 @@ public class PlayerMovement : MonoBehaviour
 
     // ホバーモード関連の設定
     [Header("Hover")]
-    public float hoverAcceleration = 10f; // ホバーモード中の加速度
+    public float hoverAcceleration = 25f; // ホバーモード中の加速度
     public float hoverDrag = 0.95f; // ホバーモードの空気抵抗
-    public float hoverFallMultiplier = 0.5f; // ホバーモードの落下速度倍率
+    public float hoverFallMultiplier = 0.9f; // ホバーモードの落下速度倍率
 
     // ホバー回避・ダッシュ関連
     public float boostDodgeForce = 15f; // ホバー回避の初速
-    public float hoverBoostDodgeMultiplier = 1.5f; // ホバー回避時の倍率
-    public float boostDodgeDecay = 5f; // ホバー回避の減衰速度
-    public float hoverDashSpeed = 20f; // ホバーダッシュの速度
-    public float hoverDashInitialMultiplier = 2f; // ホバーダッシュ開始時の速度倍率
-    public float hoverDashDecay = 5f; // ホバーダッシュの減衰速度
+    public float hoverBoostDodgeMultiplier = 2; // ホバー回避時の倍率
+    public float hoverDashSpeed = 40; // ホバーダッシュの速度
     private bool isDodge = false;
 
     // エネルギー管理
@@ -268,7 +265,7 @@ public class PlayerMovement : MonoBehaviour
     private void Boost()
     {
         rb.AddForce(Vector3.up * boosterForce * boostMassFactor, ForceMode.Acceleration);
-        rb.velocity = new Vector3(rb.velocity.x, Mathf.Min(rb.velocity.y, maxBoosterSpeed), rb.velocity.z);
+        //rb.velocity = new Vector3(rb.velocity.x, Mathf.Min(rb.velocity.y, maxBoosterSpeed), rb.velocity.z);
         energy -= energyBoostConsumption * Time.deltaTime;
         isBoosting = true;
     }

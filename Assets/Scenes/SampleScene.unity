@@ -753,6 +753,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cartridgeLifeTime: 1
+  Explosive1: {fileID: 0}
   weaponEntries: []
   armorEntries: []
   _defaltMainColor1: {r: 0.3686, g: 0.3686, b: 0.3686, a: 1}

@@ -14,7 +14,7 @@
             "energyRecoveryRate": 10,
             "energyBoostConsumption": 20,
             "energyHoverConsumption": 5,
-            "thrustPower": 130.0,
+            "thrustPower": 250.0,
             "hoverPower": 250.0
         }
     }

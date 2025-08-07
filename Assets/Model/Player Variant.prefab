@@ -308,20 +308,17 @@ MonoBehaviour:
   maxBoosterSpeed: 50
   maxFallSpeed: -20
   isJumping: 0
-  hoverAcceleration: 50
+  hoverAcceleration: 25
   hoverDrag: 0.95
   hoverFallMultiplier: 1
-  boostDodgeForce: 50
-  hoverBoostDodgeMultiplier: 1.5
-  boostDodgeDecay: 1
-  hoverDashSpeed: 100
-  hoverDashInitialMultiplier: 2
-  hoverDashDecay: 1
+  boostDodgeForce: 15
+  hoverBoostDodgeMultiplier: 2
+  hoverDashSpeed: 40
   energyMax: 100
   energy: 0
   groundRecoveryRate: 2
   energyRecoveryRate: 5
-  energyConsumptionRate: 20
+  energyBoostConsumption: 20
   energyHoverConsumption: 2
   energyExhaustion: 0
   isGrounded: 0
@@ -387,6 +384,8 @@ MonoBehaviour:
   bodyArmorPath: Assets/Model/testBody.prefab
   armArmorPath: Assets/Model/testArm.prefab
   legArmorPath: Assets/Model/testLeg.prefab
+  boosterEffect: []
+  obj: {fileID: 0}
 --- !u!4 &4999094289354194145 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2534820037497168230, guid: b379fc05d68c78d418045e5b87af1563,
