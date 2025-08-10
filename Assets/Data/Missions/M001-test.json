@@ -1,0 +1,73 @@
+{
+  "mapData": {
+    "sceneName": "Battlefield01",
+    "playerSpawnPosition": { "x": 0, "y": 0, "z": 0 }
+  },
+  "missionWaves": [
+    {
+      "waveId": 1,
+      "type": "Action_SpawnUnits",
+      "spawns": [
+        { "unitType": "enemy", "unit": "soldier", "tagId": "soldierA", "position": { "x": 5, "y": 0, "z": 5 }, "radius": 0 },
+        { "unitType": "ally", "unit": "soldier", "tagId": "allyGuard", "position": { "x": -3, "y": 0, "z": 2 }, "radius": 0 }
+      ],
+      "branches": [
+        { "conditionType": "allDead", "tagId": "soldierA", "nextWaveId": 2 }
+      ],
+      "multiple": false
+    },
+    {
+      "waveId": 2,
+      "type": "Action_ShowDialogue",
+      "dialogueId": "DIA_EnemyReinforcement",
+      "spawns": [],
+      "branches": [
+        { "conditionType": "dialogueEnd", "tagId": "", "nextWaveId": 3 }
+      ],
+      "multiple": false
+    },
+    {
+      "waveId": 3,
+      "type": "Action_SpawnUnits",
+      "spawns": [
+        { "unitType": "enemy", "unit": "tank", "tagId": "Left", "position": { "x": -5, "y": 0, "z": 10 }, "radius": 0 },
+        { "unitType": "enemy", "unit": "tank", "tagId": "Right", "position": { "x": 5, "y": 0, "z": 10 }, "radius": 0 }
+      ],
+      "branches": [
+        { "conditionType": "tagDead", "tagId": "Left", "nextWaveId": 4 },
+        { "conditionType": "tagDead", "tagId": "Right", "nextWaveId": 5 }
+      ],
+      "multiple": true
+    },
+    {
+      "waveId": 4,
+      "type": "Action_SpawnUnits",
+      "spawns": [
+        { "unitType": "enemy", "unit": "turret", "tagId": "leftSupport", "position": { "x": -7, "y": 0, "z": 12 }, "radius": 0 }
+      ],
+      "branches": [
+        { "conditionType": "allDead", "tagId": "leftSupport", "nextWaveId": 6 }
+      ],
+      "multiple": false
+    },
+    {
+      "waveId": 5,
+      "type": "Action_SpawnUnits",
+      "spawns": [
+        { "unitType": "enemy", "unit": "turret", "tagId": "rightSupport", "position": { "x": 7, "y": 0, "z": 12 }, "radius": 0 }
+      ],
+      "branches": [
+        { "conditionType": "allDead", "tagId": "rightSupport", "nextWaveId": 6 }
+      ],
+      "multiple": false
+    },
+    {
+      "waveId": 6,
+      "type": "Action_ShowDialogue",
+      "dialogueId": "DIA_MissionClear",
+      "spawns": [],
+      "branches": [],
+      "multiple": false
+    }
+  ]
+}

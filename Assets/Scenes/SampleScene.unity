@@ -372,6 +372,57 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!1 &399116752
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 399116754}
+  - component: {fileID: 399116753}
+  m_Layer: 0
+  m_Name: MissionManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &399116753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 399116752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fdabebc01efb4c4a850eccc1e85b5e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mission:
+    mapData:
+      sceneName: 
+      playerSpawnPosition: {x: 0, y: 0, z: 0}
+      cameraPosition: {x: 0, y: 0, z: 0}
+    missionWaves: []
+  MissionJson: {fileID: 4900000, guid: 9203d175e0da1b04d8da83176b0f1e27, type: 3}
+--- !u!4 &399116754
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 399116752}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 126.32498, y: 239.50804, z: -180.35461}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -1519,6 +1570,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 4487041190453460874, guid: 8091a8e9e5b5abe4396b4430a01e81c2,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 4646959521307334029, guid: 8091a8e9e5b5abe4396b4430a01e81c2,
         type: 3}
@@ -3464,6 +3520,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 410087041}
   - {fileID: 832575519}
+  - {fileID: 399116754}
   - {fileID: 2024687065}
   - {fileID: 1751870422}
   - {fileID: 1200511769}
@@ -3476,7 +3533,6 @@ SceneRoots:
   - {fileID: 8536212336096804378}
   - {fileID: 1904060613}
   - {fileID: 1193587241}
-  - {fileID: 1982598962}
   - {fileID: 1516449996}
   - {fileID: 1785186799}
   - {fileID: 1517435348}
@@ -3485,3 +3541,4 @@ SceneRoots:
   - {fileID: 1016991452}
   - {fileID: 1625836823}
   - {fileID: 1848848089}
+  - {fileID: 1982598962}

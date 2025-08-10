@@ -53,11 +53,7 @@ public class PlayerArmorManager : MonoBehaviour
     }
     void SetArmor(string slotName, string boneName)
     {
-        if (LoadoutManager.Instance.armor[slotName] == null) 
-        {
-            
-        }
-        else
+        if (LoadoutManager.Instance.armor[slotName] != null)
         {
             if (LoadoutManager.Instance.armor[slotName].armorModel == null) return;
             Transform armedPoint = transform.Find($"ArmorHolder/{slotName}");

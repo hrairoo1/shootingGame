@@ -160,7 +160,7 @@ public class PlayerWeaponManager : MonoBehaviour
         {
             if (weaponSlots["MainR"].weaponModelInstance != null)
             {
-                weaponSlots["MainL"].weaponModelInstance.SetActive(true);
+                weaponSlots["MainR"].weaponModelInstance.SetActive(true);
             }
             if (weaponSlots["MainL"].weaponModelInstance != null)
             {

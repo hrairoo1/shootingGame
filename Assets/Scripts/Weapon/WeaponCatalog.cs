@@ -92,11 +92,12 @@ public class WeaponCatalog : MonoBehaviour
         armorId.armor = data.ArmorData;
         armorId.armor.armorId = armorId.id;
     }
-        IEnumerator AAA()
+    IEnumerator AAA()
     {
         yield return new WaitForSeconds(1f);
         StartCoroutine(selector.LoadSceneDelayed("SampleScene"));
-    }    IEnumerator BBB()
+    }
+    IEnumerator BBB()
     {
         yield return new WaitForSeconds(1f);
         selectionUI.SetSelectUI();
