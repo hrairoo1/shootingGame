@@ -15,14 +15,6 @@ public class DialogueManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance != null)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
-
         // Ç±Ç±Ç≈äOïîJSONì«Ç›çûÇ›ÇµÇƒÇ‡ó«Ç¢
         dialogues = new Dictionary<string, List<(string, string)>>()
         {

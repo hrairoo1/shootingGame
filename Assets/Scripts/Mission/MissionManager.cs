@@ -52,6 +52,7 @@ public class MissionManager : MonoBehaviour
         public MapData mapData;
         public List<WaveData> missionWaves;
     }
+    private HashSet<string> finishedDialogues = new HashSet<string>();
 
     #endregion
 
@@ -105,7 +106,7 @@ public class MissionManager : MonoBehaviour
                 yield return StartCoroutine(HandleBranches(wave));
                 break;
 
-            case "Action_SpawnEnemies":
+            case "Action_SpawnUnits":
                 SpawnEnemies(wave.spawns);
                 yield return StartCoroutine(HandleBranches(wave));
                 break;
@@ -114,6 +115,7 @@ public class MissionManager : MonoBehaviour
 
     void SpawnEnemies(List<SpawnInfo> spawns)
     {
+        Debug.Log("spawn");
         foreach (var spawn in spawns)
         {
             Vector3 spawnPos = spawn.position;
@@ -175,6 +177,8 @@ public class MissionManager : MonoBehaviour
                 return activeEnemies.Count == 0;
             case "tagDead":
                 return !activeEnemies.Any(e => e.GetComponent<UnitInfo>().TagId == branch.tagId);
+            case "dialogueFinished":
+                return finishedDialogues.Contains(branch.tagId); // tagId を dialogueId として使う
         }
         return false;
     }
@@ -182,6 +186,14 @@ public class MissionManager : MonoBehaviour
     IEnumerator ShowDialogueByIdCoroutine(string dialogueId)
     {
         Debug.Log($"[会話] ID={dialogueId}");
-        yield return new WaitForSeconds(2f); // ダミー
+
+        // 実際は DialogManager で UI 表示して待機
+        yield return new WaitForSeconds(2f); // ダミー表示時間
+
+        OnDialogueFinished(dialogueId);
+    }
+    public void OnDialogueFinished(string dialogueId)
+    {
+        finishedDialogues.Add(dialogueId);
     }
 }
