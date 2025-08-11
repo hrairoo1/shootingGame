@@ -2,30 +2,48 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class DialogueManager : MonoBehaviour
 {
+    [System.Serializable]
+    public class DialogueLine
+    {
+        public string speaker;
+        public string text;
+    }
+
+    [System.Serializable]
+    public class DialogueData
+    {
+        public List<DialogueEntry> dialogues;
+    }
+
+    [System.Serializable]
+    public class DialogueEntry
+    {
+        public string dialogueId;
+        public List<DialogueLine> lines;
+    }
+    [SerializeField] MissionManager missionManager;
+    [SerializeField] BattleUI battleUI;
     public bool IsPlaying { get; private set; }
 
-    private Queue<(string speaker, string text)> dialogueQueue;
+    private Queue<DialogueLine> dialogueQueue;
 
     // 会話データは外部ファイルから読み込む想定
-    private Dictionary<string, List<(string speaker, string text)>> dialogues;
+
+    public TextAsset DialogueJson;
+
+    private Dictionary<string, List<DialogueLine>> dialogues;
 
     private void Awake()
     {
-        // 外部JSON読み込みの代わりに仮データ
-        dialogues = new Dictionary<string, List<(string, string)>>()
+        DialogueData data = JsonUtility.FromJson<DialogueData>(DialogueJson.text);
+        dialogues = new Dictionary<string, List<DialogueLine>>();
+        foreach (var entry in data.dialogues)
         {
-            {
-                "DIALOGUE_001",
-                new List<(string, string)>
-                {
-                    ("A", "もしかしたらまだ敵がいるかも"),
-                    ("B", "馬鹿を言うなよ。震えるじゃないか。"),
-                    ("A", "そ、そんなわけないか")
-                }
-            }
-        };
+            dialogues[entry.dialogueId] = entry.lines;
+        }
     }
 
     /// <summary>
@@ -39,7 +57,7 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
-        dialogueQueue = new Queue<(string speaker, string text)>(dialogues[dialogueId]);
+        dialogueQueue = new Queue<DialogueLine>(dialogues[dialogueId]);
         IsPlaying = true;
         StartCoroutine(ProcessDialogueQueue());
     }
@@ -54,6 +72,7 @@ public class DialogueManager : MonoBehaviour
         {
             yield return null;
         }
+        missionManager.OnDialogueFinished(dialogueId);
     }
 
     /// <summary>
@@ -63,10 +82,15 @@ public class DialogueManager : MonoBehaviour
     {
         while (dialogueQueue.Count > 0)
         {
-            var (speaker, text) = dialogueQueue.Dequeue();
-            Debug.Log($"{speaker}: {text}");
+            var line = dialogueQueue.Dequeue();
+            Debug.Log($"{line.speaker}: {line.text}");
 
-            // UI表示やクリック待ち処理に置き換え可能
+            if (battleUI != null)
+            {
+                battleUI.speaker.text = line.speaker;
+                battleUI.speakerText.text = line.text;
+            }
+
             yield return new WaitForSeconds(2f);
         }
 

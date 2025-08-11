@@ -3455,6 +3455,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7039538390993610262}
   - component: {fileID: 7806955435833848554}
+  - component: {fileID: 2150779245331492215}
   m_Layer: 0
   m_Name: SpeakText
   m_TagString: Untagged
@@ -3510,6 +3511,20 @@ MonoBehaviour:
   m_ChildScaleWidth: 1
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &2150779245331492215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8278898270738948857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 0
+  m_VerticalFit: 2
 --- !u!1 &8322264601616945490
 GameObject:
   m_ObjectHideFlags: 0
@@ -3638,6 +3653,10 @@ MonoBehaviour:
   UI: {fileID: 8322264601616945490}
   weaponHolder: {fileID: 0}
   Player: {fileID: 0}
+  dialogueManager: {fileID: 0}
+  dialogue: {fileID: 3414689310542095937}
+  speaker: {fileID: 2927054767401891815}
+  speakerText: {fileID: 2078784567845995309}
 --- !u!1 &8703483613396675090
 GameObject:
   m_ObjectHideFlags: 0

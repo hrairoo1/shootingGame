@@ -9,7 +9,7 @@ using System.Linq;
 public class MissionManager : MonoBehaviour
 {
     #region データ構造
-
+    public GameObject enem;
     [System.Serializable]
     public class MapData
     {
@@ -21,8 +21,10 @@ public class MissionManager : MonoBehaviour
     [System.Serializable]
     public class SpawnInfo
     {
+        public string unitType;
         public string unit;    // ユニット名
         public string tagId;        // 分岐用タグ
+        public int count;
         public Vector3 position;
         public float radius;
     }
@@ -58,6 +60,7 @@ public class MissionManager : MonoBehaviour
 
     public MissionData mission; // JSONから読み込み
     private List<GameObject> activeEnemies = new List<GameObject>();
+    private List<GameObject> activeAlly = new List<GameObject>();
     private HashSet<int> executedWaves = new HashSet<int>();
     public TextAsset MissionJson;
     [SerializeField] private DialogueManager dialogueManager;
@@ -105,7 +108,7 @@ public class MissionManager : MonoBehaviour
         switch (wave.type)
         {
             case "Action_ShowDialogue":
-                yield return StartCoroutine(ShowDialogueByIdCoroutine(wave.dialogueId));
+                yield return StartCoroutine(dialogueManager.ShowDialogueByIdCoroutine(wave.dialogueId));
                 yield return StartCoroutine(HandleBranches(wave));
                 break;
 
@@ -121,27 +124,36 @@ public class MissionManager : MonoBehaviour
         Debug.Log("spawn");
         foreach (var spawn in spawns)
         {
-            Vector3 spawnPos = spawn.position;
-            if (spawn.radius > 0)
+            int spawnCount = spawn.count;
+            if (spawnCount == null || spawnCount <= 0) spawnCount = 1;
+            for (int i = 0; i < spawnCount; i++)
             {
-                Vector3 offset = Random.insideUnitSphere * spawn.radius;
-                offset.y = 0;
-                spawnPos += offset;
-            }
+                Vector3 spawnPos = spawn.position;
+                if (spawn.radius > 0)
+                {
+                    Vector3 offset = Random.insideUnitSphere * spawn.radius;
+                    offset.y = 0;
+                    spawnPos += offset;
+                }
 
-            GameObject prefab = Resources.Load<GameObject>($"Enemies/{spawn.unit}");
-            if (prefab != null)
-            {
-                GameObject unit = Instantiate(prefab, spawnPos, Quaternion.identity);
-                UnitInfo u = unit.GetComponent<UnitInfo>();
-                if (u != null)
-                    u.InitTag(spawn.tagId, this);
+                GameObject prefab = enem;
+                //GameObject prefab = Resources.Load<GameObject>($"Enemies/{spawn.unit}");
+                if (prefab != null)
+                {
 
-                activeEnemies.Add(unit);
-            }
-            else
-            {
-                Debug.LogWarning($"敵プレハブ {spawn.unit} が見つかりません");
+                    GameObject unit = Instantiate(prefab, spawnPos, Quaternion.identity);
+                    Unit u = unit.GetComponent<Unit>();
+                    if (u != null)
+                        u.InitTag(spawn.tagId, this);
+                    if(spawn.unitType == "enemy")
+                        activeEnemies.Add(unit);
+                    if (spawn.unitType == "ally")
+                        activeAlly.Add(unit);
+                }
+                else
+                {
+                    Debug.LogWarning($"敵プレハブ {spawn.unit} が見つかりません");
+                }
             }
         }
     }
@@ -176,24 +188,16 @@ public class MissionManager : MonoBehaviour
     {
         switch (branch.conditionType)
         {
-            case "allDead":
+            case "allEnemyDead":
                 return activeEnemies.Count == 0;
-            case "tagDead":
-                return !activeEnemies.Any(e => e.GetComponent<UnitInfo>().TagId == branch.tagId);
+            case "tagEnemyDead":
+                return !activeEnemies.Any(e => e.GetComponent<Unit>().TagId == branch.tagId);
             case "dialogueEnd":
                 return finishedDialogues.Contains(branch.tagId); // tagId を dialogueId として使う
+            case "alwaysTrue":
+                return true; // 無条件で即進行
         }
         return false;
-    }
-
-    IEnumerator ShowDialogueByIdCoroutine(string dialogueId)
-    {
-        Debug.Log($"[会話] ID={dialogueId}");
-
-        // 実際は DialogManager で UI 表示して待機
-        yield return new WaitForSeconds(2f); // ダミー表示時間
-        Debug.Log($"[会話終了] ID={dialogueId}");
-        OnDialogueFinished(dialogueId);
     }
     public void OnDialogueFinished(string dialogueId)
     {

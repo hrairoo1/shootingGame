@@ -1,8 +1,11 @@
+using Game.Interfaces;
 using System;
 using UnityEngine;
 
-public class UnitInfo : MonoBehaviour
+public class Unit : MonoBehaviour, IDamageable
 {
+    public float health = 100f;
+    public float currentHealth = 0f;
     public enum Faction
     {
         Alley1,
@@ -30,7 +33,27 @@ public class UnitInfo : MonoBehaviour
 
     public string TagId { get; private set; }
     private MissionManager missionManager;
+    void Awake()
+    {
+        currentHealth = health;
+    }
+    public void TakeDamage(float damage)
+    {
+        currentHealth -= damage;
+        Debug.Log(gameObject.name + " took damage: " + damage + " HP left: " + health);
 
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        missionManager.OnEnemyKilled(gameObject, TagId);
+        Debug.Log(gameObject.name + " died.");
+        Destroy(gameObject);
+    }
     public void InitTag(string tagId, MissionManager manager)
     {
         TagId = tagId;

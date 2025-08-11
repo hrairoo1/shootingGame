@@ -1,10 +1,18 @@
 {
-  "DIALOGUE_001": [
-    { "speaker": "A", "text": "もしかしたらまだ敵がいるかも" },
-    { "speaker": "B", "text": "馬鹿を言うなよ。震えるじゃないか。" },
-    { "speaker": "A", "text": "そ、そんなわけないか" }
-  ],
-  "DIALOGUE_002": [
-    { "speaker": "A", "text": "確かか？"}
+  "dialogues": [
+    {
+      "dialogueId": "DIA_EnemyReinforcement",
+      "lines": [
+        { "speaker": "A", "text": "もしかしたらまだ敵がいるかも" },
+        { "speaker": "B", "text": "馬鹿を言うなよ。震えるじゃないか。" },
+        { "speaker": "A", "text": "そ、そんなわけないか" }
+      ]
+    },
+    {
+      "dialogueId": "DIALOGUE_002",
+      "lines": [
+        { "speaker": "A", "text": "確かか？" }
+      ]
+    }
   ]
 }

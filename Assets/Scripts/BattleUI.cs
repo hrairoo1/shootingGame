@@ -12,12 +12,18 @@ public class BattleUI : MonoBehaviour
     public GameObject UI;
     public Transform weaponHolder;
     public GameObject Player;
+    //セリフ
+    [SerializeField] DialogueManager dialogueManager;
+    public GameObject dialogue;
+    public TextMeshProUGUI speaker;
+    public TextMeshProUGUI speakerText;
 
     // Start is called before the first frame update
     void Awake()
     {
 
         movement = Player.GetComponent<PlayerMovement>();
+        SetDialogue();
     }
 
     // Update is called once per frame
@@ -27,7 +33,7 @@ public class BattleUI : MonoBehaviour
         WeaponInfo("MainL");
         WeaponInfo("ShoulderR");
         WeaponInfo("ShoulderL");
-        Character character = Player.GetComponent<Character>();
+        Unit character = Player.GetComponent<Unit>();
         Transform HoverMode = UI.transform.Find("HoverMode");
         Transform Enelgy = UI.transform.Find("EnergySlider");
         Slider EnelguSl = Enelgy.GetComponent<Slider>();
@@ -37,6 +43,7 @@ public class BattleUI : MonoBehaviour
         EnelguSl.value = movement.energy;
         HPSl.maxValue = character.health;
         HPSl.value = character.currentHealth;
+
         if (movement.isHovering)
         {
             HoverMode.gameObject.SetActive(true);
@@ -44,6 +51,15 @@ public class BattleUI : MonoBehaviour
         else
         {
             HoverMode.gameObject.SetActive(false);
+        }
+        //ダイアログ表示
+        if (dialogueManager.IsPlaying == true)
+        {
+            dialogue.SetActive(true);
+        }
+        else
+        {
+            dialogue.SetActive(false);
         }
     }
     void WeaponInfo(string slotName)
@@ -115,5 +131,8 @@ public class BattleUI : MonoBehaviour
             WeaponAmmoTMP.text = "";
             WeaponReloadTime.gameObject.SetActive(false);
         }
+    }
+    void SetDialogue()
+    {
     }
 }
