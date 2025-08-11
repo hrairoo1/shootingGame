@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class DialogueManager : MonoBehaviour
 {
-    public static DialogueManager Instance { get; private set; }
-
     public bool IsPlaying { get; private set; }
 
     private Queue<(string speaker, string text)> dialogueQueue;
@@ -15,7 +13,7 @@ public class DialogueManager : MonoBehaviour
 
     private void Awake()
     {
-        // ここで外部JSON読み込みしても良い
+        // 外部JSON読み込みの代わりに仮データ
         dialogues = new Dictionary<string, List<(string, string)>>()
         {
             {
@@ -30,6 +28,9 @@ public class DialogueManager : MonoBehaviour
         };
     }
 
+    /// <summary>
+    /// 会話をIDで開始
+    /// </summary>
     public void ShowDialogueById(string dialogueId)
     {
         if (!dialogues.ContainsKey(dialogueId))
@@ -42,6 +43,10 @@ public class DialogueManager : MonoBehaviour
         IsPlaying = true;
         StartCoroutine(ProcessDialogueQueue());
     }
+
+    /// <summary>
+    /// 会話が終わるまで待機するコルーチン
+    /// </summary>
     public IEnumerator ShowDialogueByIdCoroutine(string dialogueId)
     {
         ShowDialogueById(dialogueId);
@@ -51,15 +56,17 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    IEnumerator ProcessDialogueQueue()
+    /// <summary>
+    /// 会話キューの処理
+    /// </summary>
+    private IEnumerator ProcessDialogueQueue()
     {
         while (dialogueQueue.Count > 0)
         {
             var (speaker, text) = dialogueQueue.Dequeue();
             Debug.Log($"{speaker}: {text}");
 
-            // ここでUI表示してユーザー入力待ちなどを実装
-            // 例として2秒待つだけにしておく
+            // UI表示やクリック待ち処理に置き換え可能
             yield return new WaitForSeconds(2f);
         }
 

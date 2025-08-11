@@ -60,9 +60,12 @@ public class MissionManager : MonoBehaviour
     private List<GameObject> activeEnemies = new List<GameObject>();
     private HashSet<int> executedWaves = new HashSet<int>();
     public TextAsset MissionJson;
+    [SerializeField] private DialogueManager dialogueManager;
 
     void Start()
     {
+        if (dialogueManager == null)
+            dialogueManager = FindObjectOfType<DialogueManager>();
         mission = JsonUtility.FromJson<MissionData>(MissionJson.text);
         SetupMap();
         StartCoroutine(RunMission());
@@ -177,7 +180,7 @@ public class MissionManager : MonoBehaviour
                 return activeEnemies.Count == 0;
             case "tagDead":
                 return !activeEnemies.Any(e => e.GetComponent<UnitInfo>().TagId == branch.tagId);
-            case "dialogueFinished":
+            case "dialogueEnd":
                 return finishedDialogues.Contains(branch.tagId); // tagId を dialogueId として使う
         }
         return false;
@@ -189,7 +192,7 @@ public class MissionManager : MonoBehaviour
 
         // 実際は DialogManager で UI 表示して待機
         yield return new WaitForSeconds(2f); // ダミー表示時間
-
+        Debug.Log($"[会話終了] ID={dialogueId}");
         OnDialogueFinished(dialogueId);
     }
     public void OnDialogueFinished(string dialogueId)

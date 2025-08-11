@@ -22,7 +22,7 @@
       "dialogueId": "DIA_EnemyReinforcement",
       "spawns": [],
       "branches": [
-        { "conditionType": "dialogueEnd", "tagId": "", "nextWaveId": 3 }
+        { "conditionType": "dialogueEnd", "tagId": "DIA_EnemyReinforcement", "nextWaveId": 3 }
       ],
       "multiple": false
     },
