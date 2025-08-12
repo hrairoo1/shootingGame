@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using System.Linq;
+using UnityEditor.Localization.Plugins.XLIFF.V20;
+using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 /// <summary>
 /// マップ読み込み、プレイヤー初期位置設定、ミッション進行、敵生成、分岐まで統合
@@ -113,15 +115,14 @@ public class MissionManager : MonoBehaviour
                 break;
 
             case "Action_SpawnUnits":
-                SpawnEnemies(wave.spawns);
+                SpawnUnits(wave.spawns);
                 yield return StartCoroutine(HandleBranches(wave));
                 break;
         }
     }
 
-    void SpawnEnemies(List<SpawnInfo> spawns)
+    void SpawnUnits(List<SpawnInfo> spawns)
     {
-        Debug.Log("spawn");
         foreach (var spawn in spawns)
         {
             int spawnCount = spawn.count;
@@ -136,24 +137,26 @@ public class MissionManager : MonoBehaviour
                     spawnPos += offset;
                 }
 
-                GameObject prefab = enem;
-                //GameObject prefab = Resources.Load<GameObject>($"Enemies/{spawn.unit}");
-                if (prefab != null)
+                Addressables.InstantiateAsync(spawn.unit, spawnPos, Quaternion.identity)
+                .Completed += (handle) =>
                 {
 
-                    GameObject unit = Instantiate(prefab, spawnPos, Quaternion.identity);
-                    Unit u = unit.GetComponent<Unit>();
-                    if (u != null)
-                        u.InitTag(spawn.tagId, this);
-                    if(spawn.unitType == "enemy")
-                        activeEnemies.Add(unit);
-                    if (spawn.unitType == "ally")
-                        activeAlly.Add(unit);
-                }
-                else
-                {
-                    Debug.LogWarning($"敵プレハブ {spawn.unit} が見つかりません");
-                }
+                    GameObject unit = handle.Result;
+                    if (unit != null)
+                    {
+                        Unit u = unit.GetComponent<Unit>();
+                        if (u != null)
+                            u.InitTag(spawn.tagId, this);
+                        if (spawn.unitType == "enemy")
+                            activeEnemies.Add(unit);
+                        if (spawn.unitType == "ally")
+                            activeAlly.Add(unit);
+                    }
+                    else
+                    {
+                        Debug.LogWarning($"敵プレハブ {spawn.unit} が見つかりません");
+                    }
+                };
             }
         }
     }

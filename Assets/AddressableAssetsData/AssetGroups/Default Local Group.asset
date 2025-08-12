@@ -57,6 +57,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8091a8e9e5b5abe4396b4430a01e81c2
+    m_Address: Assets/Model/Player Variant.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9ab9475f6ffaca5448260ca6b32cfbc6
     m_Address: Assets/AutoCannon.prefab
     m_ReadOnly: 0
