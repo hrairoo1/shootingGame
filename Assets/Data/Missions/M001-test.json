@@ -8,8 +8,8 @@
       "waveId": 1,
       "type": "Action_SpawnUnits",
       "spawns": [
-        { "unitType": "enemy", "unit": "Assets/Model/Player Variant.prefab", "tagId": "soldierA", "count" : 4, "position": { "x": 5, "y": 0, "z": 5 }, "radius": 6 },
-        { "unitType": "ally", "unit": "Assets/Model/Player Variant.prefab", "tagId": "allyGuard", "position": { "x": -3, "y": 0, "z": 2 }, "radius": 0 }
+        { "unitType": "Enemy", "unit": "Assets/Model/Enemy.prefab", "tagId": "soldierA", "count" : 4, "position": { "x": 5, "y": 0, "z": 5 }, "radius": 6 },
+        { "unitType": "Ally", "unit": "Assets/Model/Enemy.prefab", "tagId": "allyGuard", "position": { "x": -3, "y": 0, "z": 2 }, "radius": 0 }
       ],
       "branches": [
         { "conditionType": "allEnemyDead", "tagId": "soldierA", "nextWaveId": 2 }
@@ -30,12 +30,12 @@
       "waveId": 3,
       "type": "Action_SpawnUnits",
       "spawns": [
-        { "unitType": "enemy", "unit": "Assets/Model/Player Variant.prefab", "tagId": "Left", "position": { "x": -5, "y": 0, "z": 10 }, "radius": 0 },
-        { "unitType": "enemy", "unit": "Assets/Model/Player Variant.prefab", "tagId": "Right", "position": { "x": 5, "y": 0, "z": 10 }, "radius": 0 }
+        { "unitType": "Enemy", "unit": "Assets/Model/Enemy.prefab", "tagId": "Left", "position": { "x": -5, "y": 0, "z": 10 }, "radius": 0 },
+        { "unitType": "Enemy", "unit": "Assets/Model/Enemy.prefab", "tagId": "Right", "position": { "x": 5, "y": 0, "z": 10 }, "radius": 0 }
       ],
       "branches": [
-        { "conditionType": "tagEnemyDead", "tagId": "Left", "nextWaveId": 4 },
-        { "conditionType": "tagEnemyDead", "tagId": "Right", "nextWaveId": 5 }
+        { "conditionType": "tagDead", "tagId": "Left", "nextWaveId": 4 },
+        { "conditionType": "tagDead", "tagId": "Right", "nextWaveId": 5 }
       ],
       "multiple": true
     },
@@ -43,7 +43,7 @@
       "waveId": 4,
       "type": "Action_SpawnUnits",
       "spawns": [
-        { "unitType": "enemy", "unit": "turret", "tagId": "leftSupport", "position": { "x": -7, "y": 0, "z": 12 }, "radius": 0 }
+        { "unitType": "Enemy", "unit": "turret", "tagId": "leftSupport", "position": { "x": -7, "y": 0, "z": 12 }, "radius": 0 }
       ],
       "branches": [
         { "conditionType": "allEnemyDead", "tagId": "leftSupport", "nextWaveId": 6 }
@@ -54,7 +54,7 @@
       "waveId": 5,
       "type": "Action_SpawnUnits",
       "spawns": [
-        { "unitType": "enemy", "unit": "Assets/Model/Player Variant.prefab", "tagId": "rightSupport", "position": { "x": 7, "y": 0, "z": 12 }, "radius": 0 }
+        { "unitType": "Enemy", "unit": "Assets/Model/Enemy.prefab", "tagId": "rightSupport", "position": { "x": 7, "y": 0, "z": 12 }, "radius": 0 }
       ],
       "branches": [
         { "conditionType": "allEnemyDead", "tagId": "rightSupport", "nextWaveId": 6 }
@@ -63,6 +63,17 @@
     },
     {
       "waveId": 6,
+      "type": "Action_SpawnUnits",
+      "spawns": [
+        { "unitType": "Enemy", "unit": "Assets/Model/Enemy.prefab", "tagId": "rightSupport", "position": { "x": 7, "y": 0, "z": 12 }, "radius": 0 }
+      ],
+      "branches": [
+        { "conditionType": "enemyCountLessOrEqual",  "threshold": 3,  "tagId": "rightSupport", "nextWaveId": 7 }
+      ],
+      "multiple": false
+    }, 
+    {
+      "waveId": 7,
       "type": "Action_ShowDialogue",
       "dialogueId": "DIA_MissionClear",
       "spawns": [],

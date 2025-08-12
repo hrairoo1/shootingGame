@@ -305,7 +305,8 @@ public class Weapon : MonoBehaviour
 
         foreach (Collider target in allTargets)
         {
-            if (target.CompareTag("Enemy"))
+            Unit unit = target.GetComponent<Unit>();
+            if (target.CompareTag("Enemy") || (unit != null && unit.faction == Unit.Faction.Enemy))
             {
                 Vector3 screenPos = mainCamera.WorldToScreenPoint(target.transform.position);
                 if (IsWithinLockOnArea(screenPos))

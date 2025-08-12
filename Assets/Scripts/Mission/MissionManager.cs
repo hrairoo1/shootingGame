@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEditor.Localization.Plugins.XLIFF.V20;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using Random = UnityEngine.Random;
 
 /// <summary>
 /// マップ読み込み、プレイヤー初期位置設定、ミッション進行、敵生成、分岐まで統合
@@ -36,6 +38,7 @@ public class MissionManager : MonoBehaviour
     {
         public string conditionType; // allDead / tagDead
         public string tagId;
+        public int threshold;
         public int nextWaveId;
     }
 
@@ -61,11 +64,12 @@ public class MissionManager : MonoBehaviour
     #endregion
 
     public MissionData mission; // JSONから読み込み
-    private List<GameObject> activeEnemies = new List<GameObject>();
-    private List<GameObject> activeAlly = new List<GameObject>();
+    public List<GameObject> activeUnits = new List<GameObject>();
     private HashSet<int> executedWaves = new HashSet<int>();
     public TextAsset MissionJson;
     [SerializeField] private DialogueManager dialogueManager;
+    // ウェーブ開始時に敵スポーンフラグをセット
+    private bool enemiesSpawnedThisWave = false;
 
     void Start()
     {
@@ -85,6 +89,7 @@ public class MissionManager : MonoBehaviour
         if (player != null)
         {
             player.transform.position = mission.mapData.playerSpawnPosition;
+            player.GetComponent<Unit>().faction = Unit.Faction.Ally;
         }
     }
 
@@ -126,7 +131,7 @@ public class MissionManager : MonoBehaviour
         foreach (var spawn in spawns)
         {
             int spawnCount = spawn.count;
-            if (spawnCount == null || spawnCount <= 0) spawnCount = 1;
+            if (spawnCount <= 0) spawnCount = 1;
             for (int i = 0; i < spawnCount; i++)
             {
                 Vector3 spawnPos = spawn.position;
@@ -146,11 +151,22 @@ public class MissionManager : MonoBehaviour
                     {
                         Unit u = unit.GetComponent<Unit>();
                         if (u != null)
+                        {
                             u.InitTag(spawn.tagId, this);
-                        if (spawn.unitType == "enemy")
-                            activeEnemies.Add(unit);
-                        if (spawn.unitType == "ally")
-                            activeAlly.Add(unit);
+                            string factionStr = spawn.unitType; // 文字列で受け取る
+                            bool success = Enum.TryParse<Unit.Faction>(factionStr, out Unit.Faction factionEnum);
+
+                            if (success)
+                            {
+                                u.faction = factionEnum;
+                            }
+                            if(factionStr == "Enemy") enemiesSpawnedThisWave = true;
+                            else
+                            {
+                                Debug.LogWarning("Faction parse failed for: " + factionStr);
+                            }
+                            activeUnits.Add(unit);
+                        }
                     }
                     else
                     {
@@ -163,7 +179,7 @@ public class MissionManager : MonoBehaviour
 
     public void OnEnemyKilled(GameObject unit, string tagId)
     {
-        activeEnemies.Remove(unit);
+        activeUnits.Remove(unit);
     }
 
     IEnumerator HandleBranches(WaveData wave)
@@ -192,14 +208,21 @@ public class MissionManager : MonoBehaviour
         switch (branch.conditionType)
         {
             case "allEnemyDead":
-                return activeEnemies.Count == 0;
-            case "tagEnemyDead":
-                return !activeEnemies.Any(e => e.GetComponent<Unit>().TagId == branch.tagId);
+                // 敵がスポーンしていないなら判定しない
+                if (!enemiesSpawnedThisWave) return false;
+                return !activeUnits.Any(e => e.GetComponent<Unit>().faction != Unit.Faction.Enemy);
+            case "allAllyDead":
+                return !activeUnits.Any(e => e.GetComponent<Unit>().faction != Unit.Faction.Ally);
+            case "tagDead":
+                return !activeUnits.Any(e => e.GetComponent<Unit>().TagId == branch.tagId);
+            case "enemyCountLessOrEqual":
+                return activeUnits.Count(u =>
+                    u.GetComponent<Unit>().faction.ToString() == branch.tagId) <= branch.threshold;
             case "dialogueEnd":
                 return finishedDialogues.Contains(branch.tagId); // tagId を dialogueId として使う
             case "alwaysTrue":
                 return true; // 無条件で即進行
-        }
+            }
         return false;
     }
     public void OnDialogueFinished(string dialogueId)

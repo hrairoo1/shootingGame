@@ -13,7 +13,7 @@
             "lifeTime": 500.0
         },
         "fireControl": {
-            "fireRate": 0.2,
+            "fireRate": 0.01,
             "reloadTime": 1.0,
             "chargeReload": 0.0,
             "gravityFactor": 0.0,

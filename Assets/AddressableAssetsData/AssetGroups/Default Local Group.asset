@@ -62,6 +62,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 928b99d9c475e3d4e9493530718b9f38
+    m_Address: Assets/Model/Enemy.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9ab9475f6ffaca5448260ca6b32cfbc6
     m_Address: Assets/AutoCannon.prefab
     m_ReadOnly: 0
