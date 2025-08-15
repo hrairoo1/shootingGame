@@ -106,6 +106,10 @@ public class Weapon : MonoBehaviour
     }
     void Update()
     {
+        RangeWeapon();
+    }
+    void RangeWeapon()
+    {
         // 反動のリカバリー処理
         currentRecoilOffset = Vector3.SmoothDamp(
             currentRecoilOffset,
@@ -116,6 +120,7 @@ public class Weapon : MonoBehaviour
         {
             currentFireRate -= fireRate / fireRate * Time.deltaTime;
         }
+        //スピンアップタイプ
         if (currentSpinUp >= 0 && isSpinUp == false)
         {
             if (spinUpType == 0) currentSpinUp -= Time.deltaTime;
@@ -139,6 +144,7 @@ public class Weapon : MonoBehaviour
             }
 
         }
+        //リロード時間
         if (currentReloadTime > 0)
         {
             currentReloadTime -= Time.deltaTime;
@@ -205,10 +211,53 @@ public class Weapon : MonoBehaviour
         if ((semiAuto || FireEnd)) yield break;
         FireEnd = true;
 
-        Debug.Log("shoot!");
+        if (true)
+        {
+            StartCoroutine(PerformSlash());
+            yield break;
+        }
         // 反動適用
         ApplyRecoil();
         StartCoroutine(StartFire());
+    }
+    //格闘
+    private IEnumerator PerformSlash()
+    {
+        Debug.Log("格闘");
+
+        // 攻撃モーション再生
+        if (animator != null)
+        {
+            animator.SetTrigger("attack");
+        }
+
+        // 攻撃判定タイミング（モーションの中間）
+        //yield return new WaitForSeconds(0.1f);
+
+        float attackRange = 3f;   // 剣の距離
+        float attackAngle = 60f;  // 扇形判定
+        //LayerMask hitLayer = LayerMask.GetMask("Enemy");
+
+        // 扇状範囲内の敵を取得
+        Collider[] hits = Physics.OverlapSphere(transform.position + transform.forward * (attackRange / 2),
+                                                attackRange / 2);
+
+        foreach (var hit in hits)
+        {
+            Vector3 dirToTarget = (hit.transform.position - transform.position).normalized;
+            if (Vector3.Angle(transform.forward, dirToTarget) <= attackAngle / 2)
+            {
+                Unit unit = hit.GetComponent<Unit>();
+                if (unit != null)
+                {
+                    unit.TakeDamage(ammoDamage); // 既存の ammoDamage を流用
+                }
+            }
+        }
+
+        // 攻撃後のクールタイム
+        yield return new WaitForSeconds(fireRate);
+        FireEnd = false;
     }
     public IEnumerator StartFire()
     {

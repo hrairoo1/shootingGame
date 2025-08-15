@@ -8,7 +8,7 @@ public class Unit : MonoBehaviour, IDamageable
     public float currentHealth = 0f;
     public enum Faction
     {
-        Netural,
+        Neutral,
         Ally,
         Ally2,
         Enemy,

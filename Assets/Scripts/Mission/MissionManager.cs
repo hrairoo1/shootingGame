@@ -39,6 +39,7 @@ public class MissionManager : MonoBehaviour
         public string conditionType; // allDead / tagDead
         public string tagId;
         public int threshold;
+        public float waitForSeconds;
         public int nextWaveId;
     }
 
@@ -70,6 +71,7 @@ public class MissionManager : MonoBehaviour
     [SerializeField] private DialogueManager dialogueManager;
     // ウェーブ開始時に敵スポーンフラグをセット
     private bool enemiesSpawnedThisWave = false;
+    private float branchStartTime;
 
     void Start()
     {
@@ -210,9 +212,9 @@ public class MissionManager : MonoBehaviour
             case "allEnemyDead":
                 // 敵がスポーンしていないなら判定しない
                 if (!enemiesSpawnedThisWave) return false;
-                return !activeUnits.Any(e => e.GetComponent<Unit>().faction != Unit.Faction.Enemy);
+                return activeUnits.All(e => e.GetComponent<Unit>().faction != Unit.Faction.Enemy);
             case "allAllyDead":
-                return !activeUnits.Any(e => e.GetComponent<Unit>().faction != Unit.Faction.Ally);
+                return activeUnits.Any(e => e.GetComponent<Unit>().faction != Unit.Faction.Ally);
             case "tagDead":
                 return !activeUnits.Any(e => e.GetComponent<Unit>().TagId == branch.tagId);
             case "enemyCountLessOrEqual":
@@ -220,6 +222,10 @@ public class MissionManager : MonoBehaviour
                     u.GetComponent<Unit>().faction.ToString() == branch.tagId) <= branch.threshold;
             case "dialogueEnd":
                 return finishedDialogues.Contains(branch.tagId); // tagId を dialogueId として使う
+            case "waitForSeconds":
+                if (branchStartTime == 0f)
+                    branchStartTime = Time.time;
+                return Time.time - branchStartTime >= branch.waitForSeconds;
             case "alwaysTrue":
                 return true; // 無条件で即進行
             }

@@ -3,15 +3,21 @@
     {
       "dialogueId": "DIA_EnemyReinforcement",
       "lines": [
-        { "speaker": "A", "text": "もしかしたらまだ敵がいるかも" },
-        { "speaker": "B", "text": "馬鹿を言うなよ。震えるじゃないか。" },
-        { "speaker": "A", "text": "そ、そんなわけないか" }
+        { "speaker": "A", "text": "There's an enemy over there!" },
+        { "speaker": "B", "text": "There are too many!" },
+        { "speaker": "A", "text": "Retreat!Retreeeeeeat!" }
       ]
     },
     {
-      "dialogueId": "DIALOGUE_002",
+      "dialogueId": "DIA_002",
       "lines": [
-        { "speaker": "A", "text": "確かか？" }
+        { "speaker": "Ranger", "text": "Died!" }
+      ]
+    },
+    {
+      "dialogueId": "DIA_MissionClear",
+      "lines": [
+        { "speaker": "Operater", "text": "All enemies destroyed!" }
       ]
     }
   ]
