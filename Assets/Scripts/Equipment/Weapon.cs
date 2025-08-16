@@ -211,7 +211,7 @@ public class Weapon : MonoBehaviour
         if ((semiAuto || FireEnd)) yield break;
         FireEnd = true;
 
-        if (true)
+        if (false)
         {
             StartCoroutine(PerformSlash());
             yield break;

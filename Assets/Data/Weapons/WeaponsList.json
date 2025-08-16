@@ -31,6 +31,14 @@
             "level": "1",
             "description": "New weapon description",
             "path": "Data/Weapons/MicroMissile.json"
+        },
+        {
+            "id": "Recoilless Rifle",
+            "name": "Recoilless Rifle",
+            "category": "Canon",
+            "level": "1",
+            "description": "New weapon description",
+            "path": "Data/Weapons/Recoilless rifle.json"
         }
     ]
 }

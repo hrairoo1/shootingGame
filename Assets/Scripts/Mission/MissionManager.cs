@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEditor.Localization.Plugins.XLIFF.V20;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -71,6 +72,7 @@ public class MissionManager : MonoBehaviour
     [SerializeField] private DialogueManager dialogueManager;
     // ウェーブ開始時に敵スポーンフラグをセット
     private bool enemiesSpawnedThisWave = false;
+    private bool allEnemiesActive = false;
     private float branchStartTime;
 
     void Start()
@@ -94,6 +96,17 @@ public class MissionManager : MonoBehaviour
             player.GetComponent<Unit>().faction = Unit.Faction.Ally;
         }
     }
+    void Update()
+    {
+        if(!activeUnits.Any(e => e.GetComponent<Unit>().faction == Unit.Faction.Enemy))
+        {
+            enemiesSpawnedThisWave = false; // 次のウェーブで敵がスポーンするようにフラグをリセット
+        }
+        else
+        {
+            enemiesSpawnedThisWave = true; // 敵がスポーンしている場合はフラグをセット
+        }
+    }
 
     IEnumerator RunMission()
     {
@@ -113,7 +126,7 @@ public class MissionManager : MonoBehaviour
         }
 
         executedWaves.Add(waveId);
-
+        branchStartTime = 0f; // ★ウェーブ開始ごとにリセット
         switch (wave.type)
         {
             case "Action_ShowDialogue":
@@ -162,7 +175,7 @@ public class MissionManager : MonoBehaviour
                             {
                                 u.faction = factionEnum;
                             }
-                            if(factionStr == "Enemy") enemiesSpawnedThisWave = true;
+                            if(factionStr == "Enemy") allEnemiesActive = true;
                             else
                             {
                                 Debug.LogWarning("Faction parse failed for: " + factionStr);
@@ -211,12 +224,24 @@ public class MissionManager : MonoBehaviour
         {
             case "allEnemyDead":
                 // 敵がスポーンしていないなら判定しない
-                if (!enemiesSpawnedThisWave) return false;
-                return activeUnits.All(e => e.GetComponent<Unit>().faction != Unit.Faction.Enemy);
+                if (!allEnemiesActive) return false;
+                if (!activeUnits.Any(e => e.GetComponent<Unit>().faction == Unit.Faction.Enemy))
+                {
+                    allEnemiesActive = false; // 次のウェーブで敵がスポーンするようにフラグをリセット
+                    return true; // このブランチをクリア
+                }
+                return false;
             case "allAllyDead":
-                return activeUnits.Any(e => e.GetComponent<Unit>().faction != Unit.Faction.Ally);
+                return activeUnits.All(e => e.GetComponent<Unit>().faction != Unit.Faction.Ally);
             case "tagDead":
-                return !activeUnits.Any(e => e.GetComponent<Unit>().TagId == branch.tagId);
+                // 敵がスポーンしていないなら判定しない
+                if (!enemiesSpawnedThisWave) return false;
+                if(!activeUnits.Any(e => e.GetComponent<Unit>().TagId == branch.tagId))
+                {
+                    enemiesSpawnedThisWave = false; // 次のウェーブで敵がスポーンするようにフラグをリセット
+                    return true; // このブランチをクリア
+                }
+                return false;
             case "enemyCountLessOrEqual":
                 return activeUnits.Count(u =>
                     u.GetComponent<Unit>().faction.ToString() == branch.tagId) <= branch.threshold;
@@ -225,7 +250,12 @@ public class MissionManager : MonoBehaviour
             case "waitForSeconds":
                 if (branchStartTime == 0f)
                     branchStartTime = Time.time;
-                return Time.time - branchStartTime >= branch.waitForSeconds;
+                if (Time.time - branchStartTime > branch.waitForSeconds)
+                {
+                    
+                    return true; // このブランチをクリア
+                }
+                return false;
             case "alwaysTrue":
                 return true; // 無条件で即進行
             }

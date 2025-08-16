@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 7248739089307831482}
   - component: {fileID: 4650540529899689367}
   - component: {fileID: 8696512763416955940}
-  - component: {fileID: 5408180979303266677}
   - component: {fileID: 4855788661308750787}
   m_Layer: 6
   m_Name: Recoilless rifle
@@ -137,72 +136,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &5408180979303266677
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2874574723421384502}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92c3d57d366ab394da36f1bc3f5b31ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponDatas: []
-  weaponModel: Assets/Auto Cannon.prefab
-  weight: 0
-  modelNumber: 
-  weaponName: Recoilless rifle
-  mountPosition: 
-  ammoPrefabPath: Assets/bullet.prefab
-  ammoDamage: 1
-  ammoSize: 1
-  ammoCount: 10
-  currentAmmoCount: 0
-  bulletSpeed: 300
-  fireRate: 0.2
-  isReload: 0
-  reloadTime: 5
-  chargeReload: 0
-  currentReloadTime: 0
-  gravityFactor: 0
-  lifeTime: 10
-  fireBurst: 0
-  fireBustRate: 0.1
-  semiAuto: 0
-  boostDelay: 0
-  initialVeliocity: 0
-  initialGravity: 0
-  fireCount: 1
-  spinUp: 0
-  spread: 0
-  accuracy: 1
-  explosion: 1
-  explosionType: 0
-  lockOnLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  lockOnTime: 0
-  lockOnRange: 50
-  lockOnSize: {x: 10, y: 10}
-  homingAccuracy: 0.5
-  startHoming: 0
-  allowMultiLock: 0
-  shootMuzzleRotate: 0
-  recoilAmountX: 5
-  recoilRecovery: 2
-  recoilSpread: 1
-  maxRecoilRadius: 10
-  cartridgePrefabPath: Assets/cartridge.prefab
-  cartridgeSize: 1
-  cartridgeSpeed: 5
-  cartridgeLifeTime: 120
-  cartridgeDelay: 0.1
-  cartridgeRotateSpeed: 10
-  cartridgeRandomness: 1
-  cartridgeYAngle: 0
-  cartridgeRotate: 90
 --- !u!114 &4855788661308750787
 MonoBehaviour:
   m_ObjectHideFlags: 0

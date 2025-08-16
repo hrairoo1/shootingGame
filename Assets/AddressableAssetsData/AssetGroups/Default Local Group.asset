@@ -27,6 +27,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1c0e5d89329f3b841b2d094e696e73d8
+    m_Address: Assets/Model/Enemy 2.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1fdc3123f0e468d48ac2cfe3caec5924
     m_Address: Assets/Model/testModel.prefab
     m_ReadOnly: 0
@@ -37,8 +42,18 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4575c7b392767d149ab0a6845d8ba750
+    m_Address: Assets/Model/Enemy 1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 544e6b54f5554234985e0bb78ccf30ad
     m_Address: Assets/Model/testBackpack.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 55221f966d1466449b588629d0a7093a
+    m_Address: Assets/Recoilless rifle.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

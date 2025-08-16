@@ -43,7 +43,7 @@
       "waveId": 4,
       "type": "Action_SpawnUnits",
       "spawns": [
-        { "unitType": "Enemy", "unit": "Assets/Model/Enemy.prefab", "tagId": "leftSupport", "position": { "x": -7, "y": 0, "z": 12 }, "radius": 0 }
+        { "unitType": "Enemy", "unit": "Assets/Model/Enemy.prefab", "tagId": "leftSupport", "position": { "x": -7, "y": 0, "z": 20 }, "radius": 0 }
       ],
       "branches": [
         { "conditionType": "allEnemyDead", "tagId": "leftSupport", "nextWaveId": 6 }
@@ -54,7 +54,7 @@
       "waveId": 5,
       "type": "Action_SpawnUnits",
       "spawns": [
-        { "unitType": "Enemy", "unit": "Assets/Model/Enemy.prefab", "tagId": "rightSupport", "position": { "x": 7, "y": 0, "z": 12 }, "radius": 0 }
+        { "unitType": "Enemy", "unit": "Assets/Model/Enemy.prefab", "tagId": "rightSupport", "position": { "x": 7, "y": 0, "z": 20 }, "radius": 0 }
       ],
       "branches": [
         { "conditionType": "allEnemyDead", "tagId": "rightSupport", "nextWaveId": 6 }
@@ -65,7 +65,7 @@
       "waveId": 6,
       "type": "Action_SpawnUnits",
       "spawns": [
-        { "unitType": "Enemy", "unit": "Assets/Model/Enemy.prefab", "tagId": "soldierA", "position": { "x": 7, "y": 0, "z": 12 }, "radius": 0 }
+        { "unitType": "Enemy", "unit": "Assets/Model/Enemy.prefab", "tagId": "soldierA", "position": { "x": 0, "y": 0, "z": 12 }, "radius": 0 }
       ],
       "branches": [
         { "conditionType": "allEnemyDead",  "tagId": "soldierA", "nextWaveId": 7 }
@@ -77,14 +77,6 @@
       "type": "Action_ShowDialogue",
       "dialogueId": "DIA_MissionClear",
       "spawns": [],
-      "branches": [],
-      "multiple": false
-    },
-    {
-      "waveId": 8,
-      "type": "Action_SpawnUnits",
-      "dialogueId": "DIA_MissionClear",
-      "spawns": [{ "unitType": "Enemy", "unit": "Assets/Model/s.prefab", "tagId": "rightSupport", "position": { "x": 7, "y": 0, "z": 12 }, "radius": 0 }],
       "branches": [],
       "multiple": false
     }

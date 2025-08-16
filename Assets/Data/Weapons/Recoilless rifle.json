@@ -1,20 +1,20 @@
 {
     "WeaponData": {
-        "weaponModel": "Assets/DMGT.prefab",
-        "weight": 5.0,
-        "modelNumber": "XXX-99X",
-        "weaponName": "Double Machine Gun",
+        "weaponModel": "Assets/Recoilless rifle.prefab",
+        "weight": 0.0,
+        "modelNumber": "XX222",
+        "weaponName": "Recoilless rifle",
         "ammo": {
             "ammoPrefabPath": "Assets/bullet.prefab",
-            "ammoDamage": 10.0,
-            "ammoSize": 1.0,
-            "ammoCount": 500,
-            "bulletSpeed": 100.0,
-            "lifeTime": 500.0
+            "ammoDamage": 100.0,
+            "ammoSize": 5.0,
+            "ammoCount": 1,
+            "bulletSpeed": 300.0,
+            "lifeTime": 10.0
         },
         "fireControl": {
-            "fireRate": 0.01,
-            "reloadTime": 1.0,
+            "fireRate": 0.2,
+            "reloadTime": -1.0,
             "chargeReload": 0.0,
             "gravityFactor": 0.0,
             "fireBurst": 0,
@@ -23,11 +23,12 @@
             "initialVeliocity": 0.0,
             "initialGravity": 0.0,
             "fireCount": 1,
-            "spinUp": 1.0,
+            "spinUpType": 0,
+            "spinUp": 0.0,
             "spread": 0.0,
             "accuracy": 1.0,
-            "explosion": 0.0,
-            "explosionType": 0
+            "explosion": 10.0,
+            "explosionType": 1
         },
         "lockOn": {
             "lockOnTime": 0.0,
@@ -48,13 +49,13 @@
         "cartridge": {
             "cartridgePrefabPath": "Assets/cartridge.prefab",
             "cartridgeSize": 1.0,
-            "cartridgeSpeed": 1.0,
+            "cartridgeSpeed": 5.0,
             "cartridgeLifeTime": 120.0,
-            "cartridgeDelay": 0.2,
-            "cartridgeRotateSpeed": 0.0,
-            "cartridgeRandomness": 0.0,
+            "cartridgeDelay": 0.1,
+            "cartridgeRotateSpeed": 10.0,
+            "cartridgeRandomness": 1.0,
             "cartridgeYAngle": 0.0,
-            "cartridgeRotate": 0.0
+            "cartridgeRotate": 90.0
         }
     }
 }
